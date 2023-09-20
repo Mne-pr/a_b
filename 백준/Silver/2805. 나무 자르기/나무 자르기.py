@@ -1,16 +1,23 @@
 N, M = list(map(int,input().split()))
-Klan = list(map(int,input().split()))
+tree_list = list(map(int,input().split()))
+trees = {}
 
-s,e = 0,max(Klan)
+for i in tree_list:
+    if (i not in trees.keys()):
+        trees[i] = 1
+    else:
+        trees[i] += 1
+
+s,e = 0,max(trees)
 ans = 0
 
 while(s <= e):
     H = (s+e) // 2
     res = 0
     
-    for i in Klan:
+    for i in trees.keys():
         if i > H:
-            res += (i - H)
+            res += (i - H) * trees[i]
         
     #print('s:',s,'e:',e,'mid:',H,'res:',res)
     
