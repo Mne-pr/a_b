@@ -1,10 +1,12 @@
-N = int(input())
-M = int(input())
-Nlist = list(map(int,input().split()))
+import sys
+
+N = int(sys.stdin.readline())
+M = int(sys.stdin.readline())
+Nlist = list(map(int,sys.stdin.readline().split()))
 Nlist.sort()
 
 min,max = 0,N-1
-res,sum = 0,0
+sum,res = 0,0
 
 while(max > min):
     sum = Nlist[min]+Nlist[max]
