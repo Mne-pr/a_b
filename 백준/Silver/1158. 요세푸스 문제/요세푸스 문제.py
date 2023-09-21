@@ -1,16 +1,16 @@
+import sys
 import collections
 
-N,K = list(map(int,input().split()))
+N,K = list(map(int,sys.stdin.readline().split()))
+#N,K = list(map(int,input().split()))
 queue = collections.deque([i for i in range(1,N+1)])
 
 print('<',end='')
-while (N > 0):
+while (N > 1):
     for i in range(K-1):
         queue.append(queue.popleft())
     
-    print(queue.popleft(),end='')
+    print('%d, '%(queue.popleft()),end='')
     N -= 1
-    if (N > 0):
-        print(', ',end='')
     
-print('>')
+print('%d>'%(queue.popleft()))
