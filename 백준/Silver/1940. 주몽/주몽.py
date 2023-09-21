@@ -4,7 +4,7 @@ Nlist = list(map(int,input().split()))
 Nlist.sort()
 
 min,max = 0,N-1
-sum,res = 0,0
+res,sum = 0,0
 
 while(max > min):
     sum = Nlist[min]+Nlist[max]
