@@ -6,8 +6,7 @@ queue = collections.deque([i for i in range(1,N+1)])
 print('<',end='')
 while (N > 0):
     for i in range(K-1):
-        n = queue.popleft()
-        queue.append(n)
+        queue.append(queue.popleft())
     
     print(queue.popleft(),end='')
     N -= 1
