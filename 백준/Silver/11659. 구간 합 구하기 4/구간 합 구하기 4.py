@@ -5,7 +5,8 @@ def main():
     N,M = map(int,input().split())
     inp = list(map(int,input().split()))
     
-    res = [inp[0]] + [0]*len(inp)
+    res = [0]*(len(inp)+1)
+    res[0] = inp[0]
     realres = []
     
     for i in range(1,len(inp)):
