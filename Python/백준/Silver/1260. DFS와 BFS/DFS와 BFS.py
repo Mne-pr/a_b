@@ -2,56 +2,50 @@ import sys
 input = sys.stdin.readline
 
 # depth
-def DFS(V,inp):
-    if inp.get(V) == None:
-        return
+def DFS(V,inp,N):
+    print(V,end=' ')
     stack = inp[V].copy()
-    poped = [V]
+    poped = [0]*(N+1)
+    poped[V] = 1
+    
     while stack:
         val = stack.pop(0)
-        if val in poped:
+        if poped[val] == 1:
             continue
-        poped.append(val)
+        poped[val] = 1
         print(val,end=' ')
         stack = inp[val] + stack
 
 # breadth
-def BFS(V,inp):
-    if inp.get(V) == None:
-        return
+def BFS(V,inp,N):
+    print(V,end=' ')
     queue = inp[V].copy()
-    poped = [V]
+    poped = [0]*(N+1)
+    poped[V] = 1
+    
     while queue:
         val = queue.pop(0)
-        if val in poped:
+        if poped[val] == 1:
             continue
-        poped.append(val)
+        poped[val] = 1
         print(val,end=' ')
         queue = queue + inp[val]
 
 def main():
     N,M,V = map(int,input().split())
-    inp={}
+    inp=[[] for i in range(N+1)]
 
     for i in range(M):
         a,b = map(int,input().split())
-        if inp.get(a) == None:
-            inp[a] = [b]
-        else:
-            inp[a].append(b)
-            
-        if inp.get(b) == None:
-            inp[b] = [a]
-        else:
-            inp[b].append(a)
+        inp[a].append(b)
+        inp[b].append(a)
 
-    for i in inp.values():
-        i.sort()
+    for item in inp:
+        item.sort()
 
-    print(V,end=' ')
-    DFS(V,inp)
-    print(f'\n{V}',end=' ')
-    BFS(V,inp)
+    DFS(V,inp,N)
+    print()
+    BFS(V,inp,N)
 
 if __name__ == "__main__": 
     main()
