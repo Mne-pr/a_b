@@ -2,6 +2,7 @@ import sys
 input = sys.stdin.readline
 from collections import deque
 
+
 def main():
     N,M = map(int,input().split())
     inpmap = []
@@ -10,18 +11,15 @@ def main():
     
     x = [0,0,1,-1]
     y = [1,-1,0,0]
-    tarx, tary = 0, 0
     
     for i in range(N):
         inp = list(map(int, input().split()))
         inpmap.append(inp)
         if 2 in inp:
-            tarx = inp.index(2)
-            tary = i
-    
-    queue.append([tary,tarx,1])
-    visit[tary][tarx] = True
-    inpmap[tary][tarx] = 0
+            nx = inp.index(2)
+            queue.append([i,nx,1])
+            visit[i][nx] = True
+            inpmap[i][nx] = 0
     
     while queue:
         tar = queue.popleft()
