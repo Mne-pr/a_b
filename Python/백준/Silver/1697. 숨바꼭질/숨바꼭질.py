@@ -9,26 +9,20 @@ def main():
     if (N >= K):
         print(N-K); return
     
-    # 큐 2개 번갈아서
-    queues  = [deque(),deque([N+1,N-1,N*2])]
-    counter = [0]*10000001
-    counter[N+1] = 1; counter[N-1] = 1; counter[N*2] = 1
-    count   = 1
+    # 큐 한개, 거를여부(방문)와 계산횟수가 visit 배열로 한 번에..
+    queue = deque([N])
+    visit = [0]*100001
     
-    while True:
-        c  = count%2
-        cc = (count+1)%2
-        while queues[c]:
-            tar = queues[c].popleft()
-            if tar == K:
-                print(count); return
-                
-            for i in [tar+1,tar-1,tar*2]:
-                if 0 <= i <= 10000000 and counter[i] == 0:
-                    queues[cc].append(i)
-                    counter[i] = 1
-
-        count += 1
+    while queue:
+        tar = queue.popleft()
+        
+        if tar == K:
+            print(visit[tar]); return
+            
+        for i in [tar+1,tar-1,tar*2]:
+            if 0 <= i <= 100000 and visit[i] == 0:
+                visit[i] = visit[tar]+1 
+                queue.append(i)
 
 if __name__ == "__main__": 
     main()
