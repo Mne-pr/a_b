@@ -6,13 +6,11 @@ def main():
     i = 0
     for j in range(3):
         inp = input().rstrip()
-        if "Fizz" in inp or "Buzz" in inp:
-            i += 1
+        if inp not in ["FizzBuzz","Fizz","Buzz"]:
+            i = int(inp) + 1
         else:
-            i = int(inp)
-    
-    i += 1
-    
+            i += 1
+
     if i%3 == 0:
         if i%5 == 0:
             print("FizzBuzz")
@@ -26,5 +24,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
-    
