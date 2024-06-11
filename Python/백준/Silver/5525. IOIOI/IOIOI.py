@@ -2,20 +2,22 @@ from sys import stdin
 input = stdin.readline
 
 def main():
-    T = 'I'
     res = 0
-    
-    for _ in range(int(input())):
-        T += 'OI'
-
+    n = int(input())
     l = int(input())
     inp = input().rstrip()
     
-    lt = len(T)
-    for i in range(l-lt+1):
-        if inp[i:i+lt] == T:
-            res += 1
-    
+    cur = 0
+    grade = 0
+    while cur <= l-3:
+        if inp[cur:cur+3] == 'IOI':
+            grade += 1
+            cur += 2
+            if grade >= n:
+                res += 1
+        else:
+            cur += 1
+            grade = 0
     print(res)
     
 if __name__ == "__main__": 
