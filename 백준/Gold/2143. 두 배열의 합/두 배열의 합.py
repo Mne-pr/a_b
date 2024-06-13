@@ -1,5 +1,4 @@
 import sys
-import bisect
 input = sys.stdin.readline
 
 # 두 배열의 합
@@ -10,26 +9,34 @@ def main():
     
     ac = int(input())
     a = list(map(int,input().split()))
-    amap =[]
+    amap = {}
     
     bc = int(input())
     b = list(map(int,input().split()))
-    bmap = []
+    bmap = {}
     
     # 누적합 계산하기
     for i in range(ac):
         for j in range(i+1,ac+1):
-            amap.append(sum(a[i:j]))
+            t = sum(a[i:j])
+            if amap.get(t) == None:
+                amap[t] = 1
+            else:
+                amap[t] += 1
             
     for i in range(bc):
         for j in range(i+1,bc+1):
-            bmap.append(sum(b[i:j]))
-            
-    bmap.sort()
-    
-    for aa in amap:
-        target = call-aa
-        res += bisect.bisect_right(bmap,target) - bisect.bisect_left(bmap,target)
+            t = sum(b[i:j])
+            if bmap.get(t) == None:
+                bmap[t] = 1
+            else:
+                bmap[t] += 1
+                        
+
+    for aa in amap.keys():
+        tmp = call - aa
+        if bmap.get(tmp) != None:
+            res += amap[aa]*bmap[tmp]
    
     print(res)
     
