@@ -1,45 +1,32 @@
 import sys
 input = sys.stdin.readline
 
-# 두 배열의 합
-# 배열을 받아서 a인덱스부터 b인덱스까지의 누적합을 미리 구해놓는?
 def main():
-    call = int(input())
+    T = int(input())
     res = 0
     
     ac = int(input())
     a = list(map(int,input().split()))
     amap = {}
+
+    # a의 누적합 계산하기 - 구간별 sum 함수 갈기는 것 보다 일일이 더해서 추가하는 것
+    for i in range(ac):
+        t = 0
+        for j in range(i,ac):
+            t += a[j]
+            amap[t] = amap.get(t,0) + 1 # get 실패하면 두 번째 인자를 반환한대..
     
     bc = int(input())
     b = list(map(int,input().split()))
-    bmap = {}
     
-    # 누적합 계산하기
-    for i in range(ac):
-        for j in range(i+1,ac+1):
-            t = sum(a[i:j])
-            if amap.get(t) == None:
-                amap[t] = 1
-            else:
-                amap[t] += 1
-            
+    # b의 누적합 계산과 동시에 만족하는지 확인        
     for i in range(bc):
-        for j in range(i+1,bc+1):
-            t = sum(b[i:j])
-            if bmap.get(t) == None:
-                bmap[t] = 1
-            else:
-                bmap[t] += 1
-                        
-
-    for aa in amap.keys():
-        tmp = call - aa
-        if bmap.get(tmp) != None:
-            res += amap[aa]*bmap[tmp]
-   
+        t = 0
+        for j in range(i,bc):
+            t += b[j]
+            res += amap.get(T-t,0)
+    
     print(res)
     
 if __name__ == "__main__":
     main()
-    
