@@ -10,29 +10,20 @@ def main():
         ipp = len(set(ip))
           
         if ip[-1] >= ip[0]+ip[1]:
-            res.append(0)
+            res.append('Invalid')
         else:
             ipp = len(set(ip))
             if   ipp == 1:
-                res.append(1)
+                res.append('Equilateral')
             elif ipp == 2:
-                res.append(2)
+                res.append('Isosceles')
             else:
-                res.append(3)
-        
-        
+                res.append('Scalene')
+
         ip = sorted(list(map(int,input().split())))
         
     for item in res:
-        if   item == 1:
-            print('Equilateral')
-        elif item == 2:
-            print('Isosceles')
-        elif item == 3:
-            print('Scalene')
-        else:
-            print('Invalid')
-    
- 
+        print(item)
+
 if __name__ == "__main__":
     main()
