@@ -1,14 +1,12 @@
-import sys
-input = sys.stdin.readline
+import sys 
 
 def main():
     cur = 0
     
-    for i in range(10):
-        inp = int(input())
+    for i in map(int,open(0)):
         
-        if abs(cur - 100) >= abs(cur + inp - 100):
-            cur += inp
+        if abs(cur - 100) >= abs(cur + i - 100):
+            cur += i
         else:
             break
             
