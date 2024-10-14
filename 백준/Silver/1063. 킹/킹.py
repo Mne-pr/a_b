@@ -30,8 +30,8 @@ def main():
         elif (65 <= ktmp[0] <= 72) and (1 <= ktmp[1] <= 8):
             king = ktmp
 
-    print(chr(king[0])+str(king[1]))
-    print(chr(dol[0])+str(dol[1]))
+    print(chr(king[0]),str(king[1]),sep='')
+    print(chr(dol[0]),str(dol[1]),sep='')
     
 if __name__ == "__main__":
     main()
